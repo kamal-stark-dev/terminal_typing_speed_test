@@ -18,13 +18,20 @@
 #define DIM              "\033[2m"
 #define REVERSE          "\033[7m"
 
-#define TITLE_COLOR      "\033[1;38;5;220m"
-#define HUD_COLOR        "\033[38;5;252m"
-#define INFO_COLOR       "\033[38;5;252m"
-#define PROMPT_COLOR     "\033[1;38;5;214m"
-#define ERROR_COLOR      "\033[1;38;5;196m"
-#define SUCCESS_COLOR    "\033[1;38;5;46m"
-#define ERROR_BG         "\033[41m"
+// ---------------------------
+//   NEON CYBERPUNK PALETTE
+// ---------------------------
+
+#define TITLE_COLOR      "\033[1;38;5;220m"      
+#define HUD_COLOR        "\033[38;5;252m"        
+#define INFO_COLOR       "\033[1;38;5;252m"      
+
+#define PROMPT_COLOR     "\033[1;38;5;214m"      
+
+#define ERROR_COLOR      "\033[1;38;5;196m"      
+#define ERROR_BG         "\033[48;5;41m"         
+
+#define SUCCESS_COLOR    "\033[1;38;5;46m"      
 
 #define CURSOR_HOME      "\033[H"
 #define CLEAR_TO_EOL     "\033[K"
@@ -50,9 +57,44 @@ const char* passages[] = {
   "attention support each other. Keep your breathing steady, let your shoulders "
   "relax, and let each character arrive with purpose. Over time, this steady "
   "practice builds speed naturally, because accuracy comes first, clamness comes "
-  "next, and confidence follows quietly behind.",
-  "Passage 2 - Hello MFs",
-  "Passage 3 - Bye MFs",
+  "next, and confidence follows quietly behind."
+  ,
+  "Every morning brings a new opportunity to learn something useful. A simple "
+  "routine can help us stay focused and organized throughout the day. We can "
+  "begin by making a short list of important tasks and completing them one by "
+  "one. Taking small breaks between activities also helps the mind stay fresh. "
+  "With patience and regular practice, even difficult tasks can become easier."
+  ,
+  "Technology has changed the way people communicate, work, and learn. A message "
+  "can now travel across the world in just a few seconds, while online resources "
+  "allow students to explore almost any subject from home. However, technology "
+  "is most useful when it is used responsibly. Spending too much time on screens "
+  "can reduce concentration, so it is important to maintain a healthy balance "
+  "between digital activities and real-world experiences."
+  ,
+  "Nature has a remarkable way of reminding us that every season brings change. "
+  "During spring, flowers begin to bloom and trees grow fresh leaves. Summer "
+  "brings long days, warm sunlight, and ocassional thunderstorms. In autumn, "
+  "the leaves slowly turn golden before falling to the ground. Winter arrives "
+  "with cooler air and quiet mornings. Observing these changes can teach us to "
+  "appreciate the beauty of ordinary moments."
+  ,
+  "Productivity is not simply about completing as many tasks as possible. It is "
+  "about deciding which activities deserve our attention and using out time "
+  "wisely. A person may remain busy for an entire day without making meaningful "
+  "progress if priorities are unclear. Setting realistic goals, avoiding "
+  "unecessary distractions, and reviewing completed work can make a significant "
+  "difference. The most effective approach is usually consistent rather than "
+  "complicated."
+  ,
+  "Human progress has always depended on curiosity, experimentation, and the "
+  "willingness to question familiar ideas. Many discoveries began with a simple "
+  "observation that seemed insignificant at first. Scientists, engineers, writers, "
+  "and inventors often spend years improving an idea before others recognize its "
+  "value. Failure is not necessarily the opposite of success; in many cases, it "
+  "provides information that cannot be gained thorugh sucess alone. The ability "
+  "to learn from mistakes is therefore one of the most valuable skills a person "
+  "can develop."
 };
 
 #define PASSAGE_COUNT (sizeof(passages) / sizeof(passages[0]))
