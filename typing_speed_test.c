@@ -50,7 +50,9 @@ const char* passages[] = {
   "attention support each other. Keep your breathing steady, let your shoulders "
   "relax, and let each character arrive with purpose. Over time, this steady "
   "practice builds speed naturally, because accuracy comes first, clamness comes "
-  "next, and confidence follows quietly behind."
+  "next, and confidence follows quietly behind.",
+  "Passage 2 - Hello MFs",
+  "Passage 3 - Bye MFs",
 };
 
 #define PASSAGE_COUNT (sizeof(passages) / sizeof(passages[0]))
@@ -276,7 +278,7 @@ void runTest(const char *target,
     FD_ZERO(&fds);
     FD_SET(STDIN_FILENO, &fds);
 
-    struct timeval timeout;
+    struct timeval timeout; // wait for 0.1s before updating time and screen
     timeout.tv_sec = 0;
     timeout.tv_usec = 100000;
     
@@ -287,24 +289,27 @@ void runTest(const char *target,
 
     if (ready > 0) {
       char buf[64];
-      ssize_t n = read(STDIN_FILENO, buf, sizeof(buf));
+      ssize_t n = read(STDIN_FILENO, buf, sizeof(buf)); // ssize_t is signed size type (-ve used for errors)
 
       for (ssize_t i = 0; i < n; i++) {
         char ch = buf[i];
 
-        if (ch == 3) {
+        if (ch == 3) { 
+          // when Ctrl + C is pressed
           cleanupTerminal();
           clearScreen();
           printf(TITLE_COLOR "Test Aborted.\n\n" RESET);
           exit(0); 
         }
-        else if (ch == 127 || ch == 8) {
+        else if (ch == 127 || ch == 8) { 
+          // backspace and delete key press 
           if (typedLen > 0) {
             typedLen--;
             typed[typedLen] = '\0';
           }
         }
-        else if (ch >= 32 && ch < 127) {
+        else if (ch >= 32 && ch <= 126) { 
+          // 32 -> 126 are all printable ASCII characters from a-z, A-Z, 0-9, spaces, punctuation
           if (typedLen < targetLen && typedLen + 1 < bufferSize) {
             typed[typedLen] = ch;
             typedLen++;
@@ -388,7 +393,10 @@ bool askPlayAgain(void) {
 }
 
 int main() {
-  atexit(cleanupTerminal);
+  // when the program exits normally call `cleanupTerminal()`
+  atexit(cleanupTerminal); 
+
+  // sets output in no buffering state (prevents flickering)
   setvbuf(stdout, NULL, _IONBF, 0);
 
   srand((unsigned int)time(NULL));
